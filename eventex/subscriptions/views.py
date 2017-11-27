@@ -27,7 +27,7 @@ def create(request):
                       'subscriptions/subscription_form.html',
                       {'form': form})
 
-    subscription = Subscription.objects.create(**form.cleaned_data)
+    subscription = form.save()
 
     # Send subscription email
     _send_mail('Confirmação de inscrição',
@@ -37,9 +37,6 @@ def create(request):
                {'subscription' : subscription})
 
     return HttpResponseRedirect(r('subscriptions:detail',subscription.pk))
-
-
-
 
 
 def detail(request, pk):
