@@ -12,12 +12,14 @@ class SubscriptionModelAdmin(admin.ModelAdmin):
 
     actions = ['mark_as_paid']
 
+    @classmethod
     def subscribed_today(self, obj):
         return obj.created_at == now().date()
 
     subscribed_today.short_description = 'inscrito hoje?'
     subscribed_today.boolean = True
 
+    @classmethod
     def mark_as_paid(self, request, queryset):
         count = queryset.update(paid=True)
 
