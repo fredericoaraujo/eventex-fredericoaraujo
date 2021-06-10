@@ -8,5 +8,5 @@ django-test-without-migrations==0.6
 pytz
 
 ## para servir ao heroku
-gunicorn==19.4.1
+gunicorn==19.4
 psycopg2==2.6.1
